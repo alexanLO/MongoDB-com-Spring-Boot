@@ -4,9 +4,10 @@ import com.studiesalexan.mongodbspringboot.domain.User;
 import com.studiesalexan.mongodbspringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
-
+@Configuration
 public class Instantiation implements CommandLineRunner {
 
     @Autowired
@@ -22,6 +23,5 @@ public class Instantiation implements CommandLineRunner {
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
-
     }
 }

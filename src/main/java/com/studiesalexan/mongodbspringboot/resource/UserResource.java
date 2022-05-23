@@ -23,7 +23,13 @@ public class UserResource {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<UserDTO>> findAll() {
         List<User> userList = userService.findAll();
-        List<UserDTO> userDTOList = userList.stream().map(user -> new UserDTO()).collect(Collectors.toList());
+        List<UserDTO> userDTOList = userList.stream().map(UserDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(userDTOList);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDTO> findByID(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(new UserDTO(user));
     }
 }

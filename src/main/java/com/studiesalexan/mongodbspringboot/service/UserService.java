@@ -2,6 +2,7 @@ package com.studiesalexan.mongodbspringboot.service;
 
 import com.studiesalexan.mongodbspringboot.domain.User;
 import com.studiesalexan.mongodbspringboot.repository.UserRepository;
+import com.studiesalexan.mongodbspringboot.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,9 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
-    
+
+    public User findById(String id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+    }
 }
