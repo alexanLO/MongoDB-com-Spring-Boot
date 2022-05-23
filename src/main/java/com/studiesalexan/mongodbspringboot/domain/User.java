@@ -1,9 +1,14 @@
 package com.studiesalexan.mongodbspringboot.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.lang.annotation.Documented;
 import java.util.Objects;
 
+@Document(collection = "user") // pode por também apenas @Document que ele reconheci se os nomes forem iguais
 public class User {
-
+    @Id
     private String id;
     private String name;
     private String email;
