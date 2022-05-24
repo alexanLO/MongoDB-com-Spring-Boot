@@ -7,6 +7,7 @@ import com.studiesalexan.mongodbspringboot.service.exception.ObjectNotFoundExcep
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,5 +28,10 @@ public class PostService {
     public List<Post> findByTitlePost(String text){
         return postRepository.searchTitle(text);
     }
+
+    public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+        maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
+        return postRepository.fullSearch(text, minDate, maxDate);
+    };
 
 }
