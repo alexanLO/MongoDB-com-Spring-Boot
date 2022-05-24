@@ -5,13 +5,11 @@ import com.studiesalexan.mongodbspringboot.domain.Post;
 import com.studiesalexan.mongodbspringboot.domain.User;
 import com.studiesalexan.mongodbspringboot.dto.UserDTO;
 import com.studiesalexan.mongodbspringboot.service.UserService;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.ServletSecurityElement;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;

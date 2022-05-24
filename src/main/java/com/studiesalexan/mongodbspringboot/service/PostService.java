@@ -24,4 +24,8 @@ public class PostService {
         return postUser.orElseThrow(() -> new ObjectNotFoundException("Post não encontrado"));
     }
 
+    public List<Post> findByTitlePost(String text){
+        return postRepository.findByTitleContaining(text);
+    }
+
 }
