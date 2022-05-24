@@ -24,11 +24,17 @@ public class UserService {
         return user.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
     }
 
-    public User insert(User user){
+    public User insert(User user) {
         return userRepository.insert(user);
     }
 
-    public User fromDTO(UserDTO userDTO){
+    public void delete(String id) {
+        findById(id);
+        userRepository.deleteById(id);
+    }
+
+    public User fromDTO(UserDTO userDTO) {
         return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
+
 }
