@@ -1,8 +1,10 @@
 package com.studiesalexan.mongodbspringboot.dto;
 
+import com.studiesalexan.mongodbspringboot.domain.Post;
 import com.studiesalexan.mongodbspringboot.domain.User;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDTO implements Serializable {
 
@@ -10,7 +12,7 @@ public class UserDTO implements Serializable {
     private String name;
     private String email;
 
-    public UserDTO() {
+    public UserDTO(List<Post> posts) {
     }
     public UserDTO(User user) {
         id = user.getId();

@@ -1,9 +1,11 @@
 package com.studiesalexan.mongodbspringboot.resource;
 
 
+import com.studiesalexan.mongodbspringboot.domain.Post;
 import com.studiesalexan.mongodbspringboot.domain.User;
 import com.studiesalexan.mongodbspringboot.dto.UserDTO;
 import com.studiesalexan.mongodbspringboot.service.UserService;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,7 @@ public class UserResource {
         return ResponseEntity.ok().body(new UserDTO(user));
     }
 
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@RequestBody UserDTO userDTO) {
         User user = userService.fromDTO(userDTO);
@@ -53,6 +56,12 @@ public class UserResource {
         user.setId(id);
         user = userService.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPost(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 
 }
